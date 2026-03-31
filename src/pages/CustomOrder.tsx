@@ -52,11 +52,13 @@ const CustomOrder = () => {
       </header>
 
       <main className="container mx-auto px-4 py-6 sm:py-10 max-w-5xl">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 lg:items-start">
-          {/* Left: wizard steps */}
-          <div className="flex-1 min-w-0">
-            <WizardStepper currentStep={step} steps={STEPS} />
+        {/* Stepper spans full width — NOT inside the side-by-side columns */}
+        <WizardStepper currentStep={step} steps={STEPS} />
 
+        {/* Two-column layout: step content (left) + preview (right) */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 lg:items-start mt-6 sm:mt-8">
+          {/* Left: step content + navigation */}
+          <div className="flex-1 min-w-0">
             {step === 1 && <StepShape selected={order.shape} onSelect={(id) => setOrder({ ...order, shape: id })} />}
             {step === 2 && <StepColor selected={order.color} onSelect={(id) => setOrder({ ...order, color: id })} />}
             {step === 3 && <StepMaterial selected={order.material} onSelect={(id) => setOrder({ ...order, material: id })} />}
