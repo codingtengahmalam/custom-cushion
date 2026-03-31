@@ -50,7 +50,7 @@ const CustomOrder = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-10 max-w-3xl">
+      <main className="container mx-auto px-4 py-6 sm:py-10 max-w-3xl">
         <WizardStepper currentStep={step} steps={STEPS} />
 
         {step === 1 && <StepShape selected={order.shape} onSelect={(id) => setOrder({ ...order, shape: id })} />}
@@ -61,11 +61,11 @@ const CustomOrder = () => {
 
         {/* Navigation */}
         {step < 5 && (
-          <div className="flex justify-between mt-10">
-            <Button variant="outline" onClick={prev} disabled={step === 1}>
+          <div className="flex flex-col-reverse sm:flex-row sm:justify-between gap-3 mt-8 sm:mt-10">
+            <Button variant="outline" onClick={prev} disabled={step === 1} className="w-full sm:w-auto">
               <ArrowLeft className="w-4 h-4 mr-2" /> Back
             </Button>
-            <Button onClick={next} disabled={!canNext()}>
+            <Button onClick={next} disabled={!canNext()} className="w-full sm:w-auto">
               {step === 4 ? "Proceed to Order" : "Next"} <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>

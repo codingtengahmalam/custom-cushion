@@ -39,7 +39,7 @@ const StepOrderForm = ({ order }: StepOrderFormProps) => {
         Your Details
       </h2>
       <p className="text-muted-foreground mb-8">Fill in your information to complete the order.</p>
-      <form onSubmit={handleSubmit} className="space-y-5 max-w-lg">
+      <form onSubmit={handleSubmit} className="space-y-5 sm:max-w-lg">
         <div className="space-y-2">
           <Label htmlFor="name">Full Name</Label>
           <Input id="name" placeholder="John Doe" value={form.name} onChange={(e) => handleChange("name", e.target.value)} maxLength={100} />

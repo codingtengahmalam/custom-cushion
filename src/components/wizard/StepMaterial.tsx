@@ -13,12 +13,12 @@ const StepMaterial = ({ selected, onSelect }: StepMaterialProps) => {
         Select Your Material
       </h2>
       <p className="text-muted-foreground mb-8">Each material is designed to withstand the elements.</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {CUSHION_MATERIALS.map((mat) => (
           <button
             key={mat.id}
             onClick={() => onSelect(mat.id)}
-            className={`group text-left p-6 rounded-lg border-2 transition-all duration-200 hover:shadow-md ${
+            className={`group text-left p-4 sm:p-6 rounded-lg border-2 transition-all duration-200 hover:shadow-md ${
               selected === mat.id
                 ? "border-primary bg-primary/5 shadow-md"
                 : "border-border bg-card hover:border-primary/40"
