@@ -13,19 +13,19 @@ const StepColor = ({ selected, onSelect }: StepColorProps) => {
         Pick Your Color
       </h2>
       <p className="text-muted-foreground mb-8">Choose a color that complements your outdoor space.</p>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5">
         {CUSHION_COLORS.map((color) => (
           <button
             key={color.id}
             onClick={() => onSelect(color.id)}
-            className={`group flex flex-col items-center gap-3 p-5 rounded-lg border-2 transition-all duration-200 hover:shadow-md ${
+            className={`group flex flex-col items-center gap-2 sm:gap-3 p-3 sm:p-5 rounded-lg border-2 transition-all duration-200 hover:shadow-md ${
               selected === color.id
                 ? "border-primary shadow-md"
                 : "border-border bg-card hover:border-primary/40"
             }`}
           >
             <div
-              className="w-16 h-16 rounded-full border-2 border-border relative shadow-inner"
+              className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-border relative shadow-inner"
               style={{ backgroundColor: color.hex }}
             >
               {selected === color.id && (

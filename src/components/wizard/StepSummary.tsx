@@ -24,8 +24,8 @@ const StepSummary = ({ order }: StepSummaryProps) => {
       <p className="text-muted-foreground mb-8">Review your custom cushion before placing the order.</p>
       <div className="bg-card border border-border rounded-lg divide-y divide-border">
         {items.map((item) => (
-          <div key={item.label} className="flex items-center justify-between p-5">
-            <span className="text-sm font-medium text-muted-foreground">{item.label}</span>
+          <div key={item.label} className="flex items-center justify-between gap-4 p-4 sm:p-5">
+            <span className="text-sm font-medium text-muted-foreground shrink-0">{item.label}</span>
             <div className="flex items-center gap-3">
               {item.swatch && (
                 <div className="w-6 h-6 rounded-full border border-border" style={{ backgroundColor: item.swatch }} />

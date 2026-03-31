@@ -12,12 +12,12 @@ const StepShape = ({ selected, onSelect }: StepShapeProps) => {
         Choose Your Shape
       </h2>
       <p className="text-muted-foreground mb-8">Select the cushion shape that fits your furniture.</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {CUSHION_SHAPES.map((shape) => (
           <button
             key={shape.id}
             onClick={() => onSelect(shape.id)}
-            className={`group text-left p-6 rounded-lg border-2 transition-all duration-200 hover:shadow-md ${
+            className={`group text-left p-4 sm:p-6 rounded-lg border-2 transition-all duration-200 hover:shadow-md ${
               selected === shape.id
                 ? "border-primary bg-primary/5 shadow-md"
                 : "border-border bg-card hover:border-primary/40"
