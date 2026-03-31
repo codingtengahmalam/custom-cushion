@@ -12,6 +12,7 @@ interface StepOrderFormProps {
 }
 
 const StepOrderForm = ({ order }: StepOrderFormProps) => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", email: "", phone: "", address: "" });
   const [submitting, setSubmitting] = useState(false);
 
@@ -26,12 +27,10 @@ const StepOrderForm = ({ order }: StepOrderFormProps) => {
       return;
     }
     setSubmitting(true);
-    // Simulate submission
     setTimeout(() => {
       setSubmitting(false);
-      toast.success("Order placed successfully! We'll contact you soon.");
-      console.log("Order submitted:", { cushion: order, customer: form });
-    }, 1500);
+      navigate("/payment", { state: { order, customer: form } });
+    }, 500);
   };
 
   return (
