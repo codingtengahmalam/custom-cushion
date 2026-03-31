@@ -8,6 +8,7 @@ import StepColor from "@/components/wizard/StepColor";
 import StepMaterial from "@/components/wizard/StepMaterial";
 import StepSummary from "@/components/wizard/StepSummary";
 import StepOrderForm from "@/components/wizard/StepOrderForm";
+import CushionPreview from "@/components/wizard/CushionPreview";
 import type { CushionOrder } from "@/lib/cushion-data";
 import { toast } from "sonner";
 
@@ -50,26 +51,38 @@ const CustomOrder = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-6 sm:py-10 max-w-3xl">
+      <main className="container mx-auto px-4 py-6 sm:py-10 max-w-5xl">
+        {/* Stepper spans full width — NOT inside the side-by-side columns */}
         <WizardStepper currentStep={step} steps={STEPS} />
 
-        {step === 1 && <StepShape selected={order.shape} onSelect={(id) => setOrder({ ...order, shape: id })} />}
-        {step === 2 && <StepColor selected={order.color} onSelect={(id) => setOrder({ ...order, color: id })} />}
-        {step === 3 && <StepMaterial selected={order.material} onSelect={(id) => setOrder({ ...order, material: id })} />}
-        {step === 4 && <StepSummary order={order} />}
-        {step === 5 && <StepOrderForm order={order} />}
+        {/* Two-column layout: step content (left) + preview (right) */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 lg:items-start mt-6 sm:mt-8">
+          {/* Left: step content + navigation */}
+          <div className="flex-1 min-w-0">
+            {step === 1 && <StepShape selected={order.shape} onSelect={(id) => setOrder({ ...order, shape: id })} />}
+            {step === 2 && <StepColor selected={order.color} onSelect={(id) => setOrder({ ...order, color: id })} />}
+            {step === 3 && <StepMaterial selected={order.material} onSelect={(id) => setOrder({ ...order, material: id })} />}
+            {step === 4 && <StepSummary order={order} />}
+            {step === 5 && <StepOrderForm order={order} />}
 
-        {/* Navigation */}
-        {step < 5 && (
-          <div className="flex flex-col-reverse sm:flex-row sm:justify-between gap-3 mt-8 sm:mt-10">
-            <Button variant="outline" onClick={prev} disabled={step === 1} className="w-full sm:w-auto">
-              <ArrowLeft className="w-4 h-4 mr-2" /> Back
-            </Button>
-            <Button onClick={next} disabled={!canNext()} className="w-full sm:w-auto">
-              {step === 4 ? "Proceed to Order" : "Next"} <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
+            {/* Navigation */}
+            {step < 5 && (
+              <div className="flex flex-col-reverse sm:flex-row sm:justify-between gap-3 mt-8 sm:mt-10">
+                <Button variant="outline" onClick={prev} disabled={step === 1} className="w-full sm:w-auto">
+                  <ArrowLeft className="w-4 h-4 mr-2" /> Back
+                </Button>
+                <Button onClick={next} disabled={!canNext()} className="w-full sm:w-auto">
+                  {step === 4 ? "Proceed to Order" : "Next"} <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            )}
           </div>
-        )}
+
+          {/* Right: sticky preview panel */}
+          <div className="lg:w-72 xl:w-80 lg:sticky lg:top-[73px] shrink-0">
+            <CushionPreview order={order} />
+          </div>
+        </div>
       </main>
     </div>
   );

@@ -5,9 +5,14 @@ interface StepSummaryProps {
   order: CushionOrder;
 }
 
+const CUSTOM_PREFIX = "custom:";
+
 const StepSummary = ({ order }: StepSummaryProps) => {
   const shape = CUSHION_SHAPES.find((s) => s.id === order.shape);
-  const color = CUSHION_COLORS.find((c) => c.id === order.color);
+  const isCustomColor = order.color.startsWith(CUSTOM_PREFIX);
+  const color = isCustomColor
+    ? { name: "Custom Color", hex: order.color.slice(CUSTOM_PREFIX.length) }
+    : CUSHION_COLORS.find((c) => c.id === order.color);
   const material = CUSHION_MATERIALS.find((m) => m.id === order.material);
 
   const items = [
