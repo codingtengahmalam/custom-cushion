@@ -125,9 +125,14 @@ const OrderSuccess = () => {
           </div>
         </div>
 
-        <Button className="w-full" size="lg" onClick={() => navigate("/")}>
-          Back to Home
-        </Button>
+        <div className="space-y-3">
+          <Button className="w-full" size="lg" onClick={() => navigate("/order-detail", { state: { order, customer, paymentMethod, orderNumber } })}>
+            View Order Detail
+          </Button>
+          <Button variant="outline" className="w-full" size="lg" onClick={() => navigate("/")}>
+            Back to Home
+          </Button>
+        </div>
       </main>
     </div>
   );
