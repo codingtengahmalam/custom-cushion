@@ -17,7 +17,7 @@ const StepColor = ({ selected, onSelect }: StepColorProps) => {
   const colorInputRef = useRef<HTMLInputElement>(null);
 
   const customIsSelected = isCustomColor(selected);
-  const customHex = customIsSelected ? getCustomHex(selected) : "#ffffff";
+  const customHex = customIsSelected ? getCustomHex(selected) : DEFAULT_CUSTOM_COLOR;
 
   const handleCustomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onSelect(CUSTOM_PREFIX + e.target.value);
