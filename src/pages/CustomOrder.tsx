@@ -51,14 +51,9 @@ const CustomOrder = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-6 sm:py-10">
+      <main className="container mx-auto px-4 py-6 sm:py-10 max-w-5xl">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 lg:items-start">
-          {/* Left: sticky preview panel */}
-          <div className="lg:w-72 xl:w-80 lg:sticky lg:top-[73px] shrink-0">
-            <CushionPreview order={order} />
-          </div>
-
-          {/* Right: wizard steps */}
+          {/* Left: wizard steps */}
           <div className="flex-1 min-w-0">
             <WizardStepper currentStep={step} steps={STEPS} />
 
@@ -79,6 +74,11 @@ const CustomOrder = () => {
                 </Button>
               </div>
             )}
+          </div>
+
+          {/* Right: sticky preview panel */}
+          <div className="lg:w-72 xl:w-80 lg:sticky lg:top-[73px] shrink-0">
+            <CushionPreview order={order} />
           </div>
         </div>
       </main>

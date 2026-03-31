@@ -90,17 +90,27 @@ const CushionPreview = ({ order }: CushionPreviewProps) => {
     <div className="rounded-xl border border-border bg-card p-5 flex flex-col gap-5">
       <h3 className="font-display font-semibold text-base text-foreground">Live Preview</h3>
 
-      {/* SVG illustration */}
-      <div className="w-full aspect-square rounded-lg bg-muted/50 flex items-center justify-center p-6 border border-border/60">
-        {order.shape ? (
-          <CushionShapeSVG id={order.shape} fill={svgFill} />
-        ) : (
-          <div className="flex flex-col items-center gap-2 text-muted-foreground">
-            <svg viewBox="0 0 80 80" className="w-24 h-24 opacity-30" aria-hidden="true">
-              <rect x="15" y="25" width="50" height="30" rx="8" fill="currentColor" />
+      {/* SVG illustration + size badge */}
+      <div className="w-full rounded-lg bg-muted/50 border border-border/60 p-5 flex flex-col items-center gap-3">
+        <div className="w-full aspect-square flex items-center justify-center">
+          {order.shape ? (
+            <CushionShapeSVG id={order.shape} fill={svgFill} />
+          ) : (
+            <div className="flex flex-col items-center gap-2 text-muted-foreground">
+              <svg viewBox="0 0 80 80" className="w-24 h-24 opacity-30" aria-hidden="true">
+                <rect x="15" y="25" width="50" height="30" rx="8" fill="currentColor" />
+              </svg>
+              <span className="text-xs text-center">Select a shape to preview</span>
+            </div>
+          )}
+        </div>
+        {shape?.size && (
+          <span className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground">
+            <svg className="w-3 h-3 opacity-60" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2 8h12M2 4l2 4-2 4M14 4l-2 4 2 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className="text-xs text-center">Select a shape to preview</span>
-          </div>
+            {shape.size}
+          </span>
         )}
       </div>
 
