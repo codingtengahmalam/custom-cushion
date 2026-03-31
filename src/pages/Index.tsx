@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Leaf, Shield, Palette } from "lucide-react";
+import { ArrowRight, Leaf, Shield, Palette, LayoutDashboard } from "lucide-react";
 import heroImage from "@/assets/hero-outdoor.jpg";
 
 const Index = () => {
@@ -12,9 +12,18 @@ const Index = () => {
       <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <h1 className="font-display font-bold text-xl text-foreground">CushionCraft</h1>
-          <Button onClick={() => navigate("/custom-order")} size="sm">
-            Custom Order
-          </Button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => navigate("/admin")}
+              className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors px-2 py-1.5 rounded-md hover:bg-muted"
+            >
+              <LayoutDashboard className="w-4 h-4" />
+              Admin
+            </button>
+            <Button onClick={() => navigate("/custom-order")} size="sm">
+              Custom Order
+            </Button>
+          </div>
         </div>
       </header>
 

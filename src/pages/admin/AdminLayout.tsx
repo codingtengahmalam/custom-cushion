@@ -2,8 +2,9 @@ import { NavLink, Outlet } from "react-router-dom";
 import { ShoppingBag, Users, LayoutDashboard } from "lucide-react";
 
 const NAV_ITEMS = [
-  { to: "/admin/orders", label: "Orders", icon: ShoppingBag },
-  { to: "/admin/customers", label: "Customers", icon: Users },
+  { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
+  { to: "/admin/orders", label: "Orders", icon: ShoppingBag, end: false },
+  { to: "/admin/customers", label: "Customers", icon: Users, end: false },
 ];
 
 const AdminLayout = () => {
@@ -16,10 +17,11 @@ const AdminLayout = () => {
           <span className="font-display font-semibold text-base text-foreground">Admin Panel</span>
         </div>
         <nav className="flex-1 p-3 space-y-1">
-          {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
+          {NAV_ITEMS.map(({ to, label, icon: Icon, end }) => (
             <NavLink
               key={to}
               to={to}
+              end={end}
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   isActive
